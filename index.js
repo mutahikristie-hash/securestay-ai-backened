@@ -23,6 +23,12 @@ app.post('/chat', async (req, res) => {
     );
 
     const data = await response.json();
+    console.log("Gemini raw response:", JSON.stringify(data));
+
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text
+      || "Sorry, I couldn't generate a response right now.";
+
+    res.json({ reply });
     const reply = data.candidates?.[0]?.content?.parts?.[0]?.text
       || "Sorry, I couldn't generate a response right now.";
 
