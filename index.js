@@ -29,10 +29,6 @@ app.post('/chat', async (req, res) => {
       || "Sorry, I couldn't generate a response right now.";
 
     res.json({ reply });
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text
-      || "Sorry, I couldn't generate a response right now.";
-
-    res.json({ reply });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
